@@ -5,9 +5,6 @@
 
 ca_dir="/ca-gen/ca"
 
-#modo dev, tirar daqui
-rm -rf ${ca_dir}
-
 mkdir -p /ca-gen/clients
 
 createRootCA(){
