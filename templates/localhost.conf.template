@@ -1,0 +1,22 @@
+server {
+    listen 443 ssl;
+    ssl_certificate /etc/ssl/certs/localhost.crt;
+    ssl_certificate_key /etc/ssl/certs/localhost.key;
+
+    ssl_client_certificate /etc/ssl/certs/rootCA.crt;
+    ssl_verify_client optional;
+    ssl_verify_depth 10;
+
+    server_name localhost;
+    root /usr/nginx/html;
+
+    location / {
+        set $upstream ${LOCALHOST_PROXY_PASS};
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header SSL_CLIENT_CERT $ssl_client_escaped_cert;
+        proxy_set_header Host $http_host;
+        proxy_pass $upstream;
+    }
+}
+
