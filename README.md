@@ -47,3 +47,17 @@ docker run --rm -it \
  nginx-ca:latest
 
 ```
+
+---
+
+keycloak parse examples
+
+emailAddress=joe@superserver.com,CN=Joe the super:1234,OU=Debug Org Unit,O=Debug Corp,ST=SP,C=BR
+
+```
+regex v1
+CN=.*?:(.*?),
+
+regex v2 (e-cpf)
+CN=[^:]+:(\d{11}),
+```
