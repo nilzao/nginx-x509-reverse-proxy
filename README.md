@@ -61,3 +61,8 @@ CN=.*?:(.*?),
 regex v2 (e-cpf)
 CN=[^:]+:(\d{11}),
 ```
+
+keycloak command example:
+```bash
+keycloak start --spi-x509cert-lookup-nginx-ssl-client-cert=SSL_CLIENT_CERT --hostname localhost --proxy edge
+```
